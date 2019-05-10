@@ -1,7 +1,8 @@
 package com.koscielecki.app.Fixtures;
 
 import com.koscielecki.app.Entity.Role;
-import com.koscielecki.app.Role.RoleRepository;
+
+import com.koscielecki.app.Repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
