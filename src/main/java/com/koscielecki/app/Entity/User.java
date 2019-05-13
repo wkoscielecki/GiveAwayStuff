@@ -15,19 +15,25 @@ public class User {
     private Long id;
 
     @NotBlank
+    @Column(name = "name")
     private String name;
 
     @NotBlank
+    @Column(name = "surname")
     private String surname;
 
-    @Column(unique = true)
     @NotBlank
+    @Column(name = "email",unique = true)
     private String email;
 
     @NotBlank
+    @Column(name = "password")
     private String password;
 
     private int enabled;
+
+    public User() {
+    }
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
