@@ -5,10 +5,12 @@ import com.koscielecki.app.Entity.User;
 import com.koscielecki.app.Repository.RoleRepository;
 import com.koscielecki.app.Repository.UserRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.HashSet;
 
+@Service
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
@@ -22,7 +24,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findByEmail(String email) {
+    public User findOneByEmail(String email) {
         return userRepository.findOneByEmail(email);
     }
     @Override
