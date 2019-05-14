@@ -32,6 +32,9 @@ public class User {
 
     private int enabled;
 
+    @Transient
+    private int nrRoli;
+
     public User() {
     }
 
@@ -94,5 +97,13 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public int getNrRoli() {
+        return nrRoli;
+    }
+
+    public void setNrRoli(int nrRoli) {
+        this.nrRoli = nrRoli;
     }
 }
