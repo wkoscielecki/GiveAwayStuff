@@ -8,6 +8,7 @@ import com.koscielecki.app.Service.UserService;
 import com.koscielecki.app.validation.ChangePasswordValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.ui.Model;
@@ -24,6 +25,8 @@ public class ProfileController {
 
     @Autowired
     UserService userService;
+    @Autowired
+    private MessageSource messageSource;
 
     @RequestMapping(value = "/profile", method = RequestMethod.GET)
     public String showProfile(Model model) {
@@ -44,7 +47,7 @@ public class ProfileController {
         return "editPassword";
 
     }
-    @RequestMapping(value = "/updatePassword",method = RequestMethod.POST)
+    @RequestMapping(value = "/updatePass",method = RequestMethod.POST)
     public String updatePassword(User user, BindingResult result, Model model, Locale locale) {
         String returnPage = null;
         new ChangePasswordValidator().validate(user, result);
@@ -53,6 +56,7 @@ public class ProfileController {
         } else {
             userService.updateUserPassword(user.getNewPassword(), user.getEmail());
             returnPage = "editPassword";
+            model.addAttribute("message", messageSource.getMessage("passwordChange.success", null, locale));
         }
         return returnPage;
     }
