@@ -42,8 +42,7 @@ public class RegisterController {
 
         }else{
 
-            userService.saveUser(user);
-
+            userService.save(user);
 
         }
         return "login";
