@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Locale;
 
 @Controller
-//@RequestMapping("/register")
 public class RegisterController {
 
     @Autowired
@@ -43,8 +42,7 @@ public class RegisterController {
 
         }else{
 
-            userService.saveUser(user);
-
+            userService.save(user);
 
         }
         return "login";

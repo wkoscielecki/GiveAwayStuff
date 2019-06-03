@@ -8,10 +8,12 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
+@EnableTransactionManagement
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
@@ -28,23 +30,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http)throws Exception{
-//        http
-//                .authorizeRequests()
-//
-//                .antMatchers("/resources/**", "/register").permitAll()
-//                .anyRequest().authenticated()
-//                .and()
-//                .formLogin()
-//                .loginPage("/login")
-//                .usernameParameter("email")
-//                .passwordParameter("password")
-//                .permitAll()
-//                .and()
-//                .logout()
-//                .permitAll();
+
         http.authorizeRequests()
                 .antMatchers("/").hasAnyRole("USER","ADMIN")
-
+                .antMatchers("/userList").hasAnyRole("ADMIN")
                 .antMatchers("/login").permitAll()
                 .antMatchers("/register").permitAll()
 

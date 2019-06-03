@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+</head>
+<body>
+<h1 align="center">MY Profile</h1>
+
+<div >
+    <table border="1" cellpadding="0" align="center">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Email</th>
+            <th>Actions</th>
+
+
+
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+            <td><p th:text="${user.id}"></p></td>
+            <td><p th:text="${user.name}"></p></td>
+            <td><p th:text="${user.surname}"></p></td>
+            <td><p th:text="${user.email}"></p></td>
+            <td> <a th:href="@{'/edit/' + ${user.id}}">Edit</a>
+
+            </td>
+
+
+        </tr>
+
+        </tbody>
+    </table>
+
+
+
+    <div class="form-group form-group--buttons" align="center">
+        <a href="/delete" class="btn btn--without-border">Delete</a>
+
+    </div>
+</div>
+
+
+
+</body>
+</html>

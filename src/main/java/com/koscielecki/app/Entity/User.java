@@ -5,6 +5,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.Set;
 
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -23,7 +24,7 @@ public class User {
     private String surname;
 
     @NotBlank
-    @Column(name = "email",unique = true)
+    @Column(name = "email")
     private String email;
 
     @NotBlank
@@ -31,6 +32,11 @@ public class User {
     private String password;
 
     private int enabled;
+
+    @Transient
+    private int nrRoli;
+    @Transient
+    private String newPassword;
 
     public User() {
     }
@@ -94,5 +100,21 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public int getNrRoli() {
+        return nrRoli;
+    }
+
+    public void setNrRoli(int nrRoli) {
+        this.nrRoli = nrRoli;
+    }
+
+    public String getNewPassword() {
+        return newPassword;
+    }
+
+    public void setNewPassword(String newPassword) {
+        this.newPassword = newPassword;
     }
 }
