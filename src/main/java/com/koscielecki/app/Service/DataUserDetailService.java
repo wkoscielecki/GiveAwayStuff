@@ -30,7 +30,7 @@ public class DataUserDetailService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) {
-        User user = userService.findOneByEmail(email);
+        User user = userService.findByEmail(email);
         if (user == null) {throw new UsernameNotFoundException(email); }
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
         for (Role role : user.getRoles()) {
